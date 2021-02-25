@@ -27,7 +27,7 @@ impl<D: Data> Widget<D> for WidgetMatcher<D> {
             self.content = Some(WidgetPod::new((self.constructor)(data)));
             self.disc = Some(discriminant(data));
             ctx.children_changed();
-        } if let Some(content) = &mut self.content {
+        } else if let Some(content) = &mut self.content {
             content.event(ctx, event, data, env);
         }
     }
